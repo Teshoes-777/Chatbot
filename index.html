@@ -1,27 +1,14 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <title>Test GPT Assistant</title>
+  <meta charset="UTF-8" />
+  <title>Chat cu Asistentul GPT</title>
 </head>
 <body>
   <h1>Chat cu Asistentul GPT</h1>
-  <textarea id="input" rows="4" cols="50" placeholder="Scrie un mesaj..."></textarea><br>
-  <button onclick="trimite()">Trimite</button>
-  <p><strong>Răspuns:</strong> <span id="raspuns"></span></p>
-
-  <script>
-    async function trimite() {
-      const mesaj = document.getElementById("input").value;
-      const r = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: mesaj })
-      });
-      const data = await r.json();
-      document.getElementById("raspuns").innerText = data.reply || data.error;
-    }
-  </script>
+  <textarea id="userInput" rows="4" cols="50" placeholder="Scrie un mesaj...">salut</textarea><br>
+  <button onclick="sendMessage()">Trimite</button>
+  <p><strong>Răspuns:</strong> <span id="response"></span></p>
+  <script src="chat.js"></script>
 </body>
 </html>
